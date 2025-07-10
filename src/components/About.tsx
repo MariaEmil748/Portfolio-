@@ -145,30 +145,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Education */}
-          <motion.div
-            className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Education</h3>
-            <div className="space-y-4">
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-gray-900">
-                  Faculty of Computer & Information Technology
-                </h4>
-                <p className="text-gray-600">Egyptian E-Learning University (EELU)</p>
-              </div>
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-gray-900">
-                  Experimental Language School
-                </h4>
-                <p className="text-gray-600">Foundation Education</p>
-              </div>
-            </div>
-          </motion.div>
+          
         </motion.div>
       </div>
     </section>
