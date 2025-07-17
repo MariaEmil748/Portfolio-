@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,10 +36,14 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold gradient-text"
+            className="flex items-center"
             whileHover={{ scale: 1.05 }}
           >
-            Maria Emil
+            <img
+              src="/images/logo/web-design.png"
+              alt="Maria Emil Logo"
+              className="h-10 w-auto"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -75,12 +79,14 @@ const Header = () => {
               <Linkedin className="w-5 h-5" />
             </motion.a>
             <motion.a
-              href="mailto:mariaemil4t2@gmail.com"
+              href="https://github.com/MariaEmil748"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
               whileHover={{ scale: 1.1, rotate: -5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Mail className="w-5 h-5" />
+              <Github className="w-5 h-5" />
             </motion.a>
           </div>
 
@@ -126,12 +132,14 @@ const Header = () => {
                 <Linkedin className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="mailto:mariaemil4t2@gmail.com"
+                href="https://github.com/MariaEmil748"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Mail className="w-5 h-5" />
+                <Github className="w-5 h-5" />
               </motion.a>
             </div>
           </div>

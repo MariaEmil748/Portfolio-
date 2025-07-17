@@ -4,26 +4,26 @@ import { Code2, Palette, Zap, Users, Target, Lightbulb } from 'lucide-react';
 const About = () => {
   const skills = [
     {
-      category: 'Frontend Development',
-      items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Angular', 'Bootstrap', 'Sass'],
+      category: 'Frontend',
+      items: ['React', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'SASS', 'Material-UI', 'Styled Components', 'Redux', 'jQuery', 'Framer Motion', 'GSAP', 'Three.js'],
       icon: Code2,
       color: 'from-blue-500 to-blue-700',
     },
     {
-      category: 'Backend & Databases',
-      items: ['PHP', 'XAMPP', 'SQL', 'Firebase'],
+      category: 'Backend',
+      items: ['Node.js', 'Express.js', 'MongoDB', 'MySQL', 'Firebase'],
       icon: Zap,
       color: 'from-green-500 to-green-700',
     },
     {
       category: 'UI/UX Design',
-      items: ['Figma', 'Canva', 'User Research', 'Prototyping'],
+      items: ['Figma', 'Adobe XD', 'Adobe Photoshop', 'Adobe Illustrator', 'Canva'],
       icon: Palette,
       color: 'from-purple-500 to-purple-700',
     },
     {
       category: 'Development Tools',
-      items: ['VS Code', 'Cursor', 'Spline', 'Git', 'GitHub'],
+      items: ['VS Code', 'Git', 'GitHub', 'Vite'],
       icon: Target,
       color: 'from-orange-500 to-orange-700',
     },
@@ -38,36 +38,95 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-20 bg-white relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="absolute top-20 left-20 w-32 h-32 bg-blue-300/40 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-20 w-24 h-24 bg-blue-400/30 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            x: [0, -30, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-500/30 rounded-full filter blur-2xl"
+          animate={{
+            scale: [1, 1.4, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-1/4 w-20 h-20 bg-blue-300/25 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1.1, 1, 1.1],
+            x: [0, 20, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          className="max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-16">
+          {/* About Me Section */}
+          <div className="text-center mb-20">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              className="text-5xl md:text-7xl font-bold text-gray-900 mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              About <span className="gradient-text">Me</span>
+              About <span className="bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-600 bg-clip-text text-transparent">Me</span>
             </motion.h2>
-            <motion.p
-              className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            <motion.div
+              className="max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              I'm a passionate UI/UX Designer and Front-End Developer from Egypt, dedicated to creating 
-              beautiful, functional digital experiences. With expertise in modern web technologies and 
-              design principles, I transform ideas into engaging user interfaces.
-            </motion.p>
+              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
+                <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6">
+                  I'm a passionate <span className="font-bold text-blue-600">UI/UX Designer</span> and 
+                  <span className="font-bold text-purple-600"> Front-End Developer</span> from Egypt, dedicated to creating 
+                  beautiful, functional digital experiences.
+                </p>
+              </div>
+            </motion.div>
           </div>
 
           {/* Technical Skills */}
