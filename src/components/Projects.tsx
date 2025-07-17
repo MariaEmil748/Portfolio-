@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Smartphone, Globe, Gamepad2 } from 'lucide-react';
+import { ExternalLink, Smartphone } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -8,178 +7,207 @@ const Projects = () => {
       id: 1,
       title: 'GenCare',
       subtitle: 'AI-Powered Maternal Health Platform',
-      description: 'A comprehensive digital solution for maternal health featuring AI-powered health monitoring, personalized care recommendations, and seamless communication between expecting mothers and healthcare providers.',
-      image: 'https://images.pexels.com/photos/8376298/pexels-photo-8376298.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'TypeScript', 'AI/ML', 'Firebase', 'Figma'],
+      description: 'GENCARE is a pregnancy tracker that uses AI to detect fetal diseases and gives helpful tips for expectant mothers.',
+      image: '/images/projects/gencare.png',
       type: 'Website & Mobile App',
-      icon: Smartphone,
       gradient: 'from-pink-500 to-rose-500',
-      category: 'Graduation Project',
+      liveUrl: 'https://gencare-five.vercel.app/',
     },
     {
       id: 2,
       title: 'Scoop Ice Cream',
       subtitle: 'Sweet Digital Experience',
-      description: 'A delightful e-commerce website design for an ice cream brand, featuring vibrant colors, smooth animations, and an intuitive shopping experience that captures the joy of sweet treats.',
-      image: 'https://images.pexels.com/photos/1352278/pexels-photo-1352278.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Animation'],
+      description: 'SCOOP is a fun ice cream shop website with playful UI/UX. Browse flavors and customize your order easily.',
+      image: '/images/projects/scoop.png',
       type: 'Website Design',
-      icon: Globe,
       gradient: 'from-orange-500 to-pink-500',
-      category: 'UI/UX Design',
+      liveUrl: 'https://www.figma.com/proto/bBNWWNFxJPLjhL19IXyO9U/scoop?page-id=0%3A1&node-id=44-35&p=f&viewport=478%2C185%2C0.03&t=K36SEYGYAVQSoI6a-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=44%3A35',
     },
     {
       id: 3,
-      title: 'This Portfolio',
-      subtitle: 'Personal Brand Showcase',
-      description: 'A modern, responsive portfolio website showcasing my skills, projects, and journey as a UI/UX Designer and Front-End Developer. Built with cutting-edge technologies and smooth animations.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
+      title: 'maria-bag',
+      subtitle: 'portfolio',
+      description: 'Maria’s Bag is a creative portfolio that showcases unique projects and technical skills, all wrapped in an interactive experience.',
+      image: '/images/projects/mariabag.png',
       type: 'Portfolio Website',
-      icon: Globe,
       gradient: 'from-blue-500 to-teal-500',
-      category: 'Personal Project',
-    },
-    {
-      id: 4,
-      title: 'E-Commerce Platform',
-      subtitle: 'DEPI Training Project',
-      description: 'A full-featured e-commerce platform developed as part of the Digital Egypt Pioneers Initiative training program, showcasing modern web development practices and user-centered design.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'PHP', 'MySQL', 'Bootstrap'],
-      type: 'Full-Stack Web App',
-      icon: Globe,
-      gradient: 'from-green-500 to-teal-500',
-      category: 'Training Project',
-    },
-    {
-      id: 5,
-      title: 'NASA Space Apps',
-      subtitle: 'International Challenge',
-      description: 'An innovative game and website developed for the NASA International Space Apps Challenge, combining educational content with engaging gameplay to inspire interest in space exploration.',
-      image: 'https://images.pexels.com/photos/2159/flight-sky-earth-space.jpg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['JavaScript', 'HTML5 Canvas', 'CSS', 'Game Development'],
-      type: 'Game & Website',
-      icon: Gamepad2,
-      gradient: 'from-purple-500 to-indigo-500',
-      category: 'Competition',
-    },
-    {
-      id: 6,
-      title: 'Harmony Resort',
-      subtitle: 'Luxury Hospitality Experience',
-      description: 'A sophisticated website design for a luxury resort, featuring elegant layouts, stunning visuals, and seamless booking functionality to create an immersive digital experience.',
-      image: 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      type: 'Website Design',
-      icon: Globe,
-      gradient: 'from-cyan-500 to-blue-500',
-      category: 'Client Project',
+      liveUrl: 'https://maria-bag.vercel.app/',
     },
   ];
 
+  
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-20 bg-white relative overflow-hidden">
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Primary floating elements */}
         <motion.div
-          className="max-w-6xl mx-auto"
+          className="absolute top-20 left-20 w-40 h-40 bg-blue-300/40 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1, 1.4, 1],
+            rotate: [0, 180, 360],
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-40 right-20 w-32 h-32 bg-blue-400/30 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-1/3 w-28 h-28 bg-blue-500/30 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1, 1.5, 1],
+            rotate: [0, -180, -360],
+            x: [0, 60, 0],
+            y: [0, -40, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        
+        {/* Additional floating orbs */}
+        <motion.div
+          className="absolute top-1/2 left-10 w-16 h-16 bg-blue-400/30 rounded-full filter blur-2xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-10 w-20 h-20 bg-blue-300/25 rounded-full filter blur-2xl"
+          animate={{
+            scale: [1.1, 1, 1.1],
+            x: [0, -25, 0],
+            y: [0, 15, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          className="max-w-7xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Featured <span className="gradient-text">Projects</span>
+              Featured <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-clip-text text-transparent">Projects</span>
             </motion.h2>
             <motion.p
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Explore my latest work showcasing innovative solutions and creative designs
+              Explore my latest work showcasing innovative solutions, creative designs, and cutting-edge technology implementations
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-                initial={{ opacity: 0, y: 50 }}
+                className="group relative"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-white text-sm font-medium bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
-                        {project.category}
-                      </span>
-                      <div className={`w-8 h-8 bg-gradient-to-r ${project.gradient} rounded-full flex items-center justify-center`}>
-                        <project.icon className="w-4 h-4 text-white" />
+                <div className="bg-white/80 backdrop-blur-lg rounded-3xl overflow-hidden shadow-2xl border border-blue-200/30 group-hover:border-blue-300/50 transition-all duration-500">
+                  {/* Project Image */}
+                  <div className="relative overflow-hidden h-64">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {/* Icon - only show for projects that have an icon */}
+                    {project.icon && (
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-end">
+                        <motion.div 
+                          className={`w-10 h-10 bg-gradient-to-r ${project.gradient} rounded-full flex items-center justify-center backdrop-blur-md border border-white/30`}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                        >
+                          <project.icon className="w-5 h-5 text-white" />
+                        </motion.div>
                       </div>
+                    )}
+
+                    {/* Project Type */}
+                    <div className="absolute bottom-4 left-4">
+                      <span className="text-white/80 text-sm font-medium flex items-center">
+                        {project.icon && <project.icon className="w-4 h-4 mr-2" />}
+                        {project.type}
+                      </span>
                     </div>
                   </div>
-                </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{project.subtitle}</p>
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs">
-                        +{project.technologies.length - 3} more
-                      </span>
-                    )}
-                  </div>
+                  {/* Project Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-blue-600 text-sm font-medium mb-3">{project.subtitle}</p>
+                    <p className="text-gray-700 text-sm leading-relaxed mb-6 line-clamp-3">
+                      {project.description}
+                    </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500 flex items-center">
-                      <project.icon className="w-4 h-4 mr-1" />
-                      {project.type}
-                    </span>
-                    <div className="flex space-x-2">
-                      <motion.button
-                        className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ExternalLink className="w-4 h-4 text-gray-600" />
-                      </motion.button>
-                      <motion.button
-                        className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github className="w-4 h-4 text-gray-600" />
-                      </motion.button>
+                    {/* Action Buttons */}
+                    <div className="flex items-center gap-3">
+                      {project.liveUrl && (
+                        <motion.a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 bg-gradient-to-r from-blue-500 to-sky-600 text-white px-4 py-2 rounded-xl text-sm font-medium text-center hover:from-blue-600 hover:to-sky-700 transition-all duration-300 flex items-center justify-center gap-2"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View Project
+                        </motion.a>
+                      )}
                     </div>
                   </div>
                 </div>
