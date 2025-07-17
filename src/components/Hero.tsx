@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Code, Palette, Sparkles } from 'lucide-react';
+import { Code, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   const containerVariants = {
@@ -27,231 +26,362 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen bg-white relative overflow-hidden">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Primary floating elements */}
-        <motion.div
-          className="absolute top-20 left-20 w-40 h-40 bg-blue-300/40 rounded-full filter blur-3xl"
-          animate={{
-            scale: [1, 1.4, 1],
-            rotate: [0, 180, 360],
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-32 h-32 bg-blue-400/30 rounded-full filter blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/3 w-28 h-28 bg-blue-500/30 rounded-full filter blur-3xl"
-          animate={{
-            scale: [1, 1.5, 1],
-            rotate: [0, -180, -360],
-            x: [0, 60, 0],
-            y: [0, -40, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Additional floating orbs */}
-        <motion.div
-          className="absolute top-1/2 left-10 w-16 h-16 bg-blue-400/30 rounded-full filter blur-2xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-10 w-20 h-20 bg-blue-300/25 rounded-full filter blur-2xl"
-          animate={{
-            scale: [1.1, 1, 1.1],
-            x: [0, -25, 0],
-            y: [0, 15, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
+    <section id="home" className="min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-lg border border-white/30 shadow-xl overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+          <motion.div
+            className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-400/20 via-indigo-300/15 to-transparent rounded-full"
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-4 left-4 w-12 h-12 border-2 border-blue-400/30 rounded-lg rotate-45"
+            animate={{
+              rotate: [45, 225, 45],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-6 w-8 h-8 bg-indigo-500/20 rounded-full"
+            animate={{
+              y: [0, -10, 0],
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-6 left-1/3 w-6 h-6 bg-gradient-to-br from-cyan-400/25 to-blue-500/25 rounded-full"
+            animate={{
+              x: [0, 15, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 right-8 w-10 h-10 bg-gradient-to-br from-blue-400/20 via-indigo-300/15 to-transparent rounded-full"
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-1/4 right-1/3 w-8 h-8 border-2 border-blue-400/30 rounded-lg rotate-45"
+            animate={{
+              rotate: [45, 225, 45],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
 
-      <div className="container mx-auto px-6 py-24 relative z-10">
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-5xl mx-auto text-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Enhanced Avatar Section */}
           <motion.div
-            className="flex justify-center mb-12"
+            className="flex justify-center mb-8"
             variants={itemVariants}
           >
-            <div className="relative">
+            <div className="relative group">
               <motion.div
-                className="w-40 h-40 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-lg border-4 border-white/20"
-                whileHover={{ scale: 1.1 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-20 h-20 text-white" />
-              </motion.div>
-              
-              {/* Floating skill icons around the avatar */}
-              <motion.div
-                className="absolute -top-3 -right-3 w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-white/30"
+                className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg"
                 animate={{ 
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360] 
+                  y: [0, -15, 0],
+                  rotate: [0, 180, 360],
+                  scale: [1, 1.1, 1]
                 }}
-                transition={{ duration: 3, repeat: Infinity }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Code className="w-6 h-6 text-white" />
               </motion.div>
+              
               <motion.div
-                className="absolute -bottom-3 -left-3 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-white/30"
+                className="absolute -bottom-4 -left-6 w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg"
                 animate={{ 
-                  scale: [1.2, 1, 1.2],
-                  rotate: [360, 180, 0] 
+                  y: [0, 12, 0],
+                  rotate: [360, 180, 0],
+                  scale: [1.1, 1, 1.1]
                 }}
-                transition={{ duration: 4, repeat: Infinity }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Palette className="w-6 h-6 text-white" />
+                <Sparkles className="w-5 h-5 text-white" />
               </motion.div>
               
-              {/* Glowing ring effect */}
               <motion.div
-                className="absolute inset-0 rounded-full border-2 border-cyan-400/50"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute top-1/2 -left-8 w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
+                animate={{ 
+                  x: [0, -10, 0],
+                  scale: [1, 1.3, 1],
+                  opacity: [0.8, 1, 0.8]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              <motion.div
+                className="absolute top-8 -right-12 w-6 h-6 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg shadow-lg"
+                animate={{ 
+                  x: [0, 15, 0],
+                  y: [0, -8, 0],
+                  rotate: [0, 90, 180]
+                }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <motion.div
+                className="w-64 h-64 bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-lg border-4 border-white/30 relative overflow-hidden"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent rounded-full"></div>
+                
+                <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-white/50 shadow-xl">
+                  <motion.img
+                    src="/images/logo/me.png"
+                    alt="Maria Emil"
+                    className="w-full h-full object-cover"
+                    initial={{ scale: 1.3, opacity: 0 }}
+                    animate={{ scale: 1.2, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    whileHover={{ scale: 1.25 }}
+                  />
+                  
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-cyan-400/20 via-transparent to-purple-400/20"
+                    animate={{ 
+                      opacity: [0.2, 0.4, 0.2],
+                      rotate: [0, 180, 360] 
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      className="absolute top-2 right-2"
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.7, 1, 0.7]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                    >
+                      <Sparkles className="w-4 h-4 text-cyan-300 drop-shadow-lg" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute bottom-3 left-3"
+                      animate={{ 
+                        scale: [1, 1.3, 1],
+                        opacity: [0.6, 1, 0.6]
+                      }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                    >
+                      <Sparkles className="w-3 h-3 text-purple-300 drop-shadow-lg" />
+                    </motion.div>
+                    <motion.div
+                      className="absolute top-1/2 left-1"
+                      animate={{ 
+                        scale: [1, 1.4, 1],
+                        opacity: [0.5, 0.9, 0.5]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity, delay: 2 }}
+                    >
+                      <Sparkles className="w-2 h-2 text-blue-300 drop-shadow-lg" />
+                    </motion.div>
+                  </div>
+                </div>
+                
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-blue-300/60"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                
+                <motion.div
+                  className="absolute inset-2 rounded-full border border-cyan-300/40"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                />
+              </motion.div>
+              
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-600/20 -z-10"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
+                transition={{ duration: 4, repeat: Infinity }}
               />
             </div>
           </motion.div>
 
-          {/* Enhanced Typography */}
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight whitespace-nowrap"
-            variants={itemVariants}
-          >
-            Hello, I'm{' '}
-            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-clip-text text-transparent">
-              Maria Emil
-            </span>
-          </motion.h1>
-
-          <motion.p
-            className="text-xl md:text-3xl text-gray-700 mb-12 max-w-4xl mx-auto font-light leading-relaxed"
-            variants={itemVariants}
-          >
-            <span className="text-blue-600 font-semibold">UI/UX Designer</span> & 
-            <span className="text-blue-700 font-semibold"> Front-End Developer</span> crafting 
-            <span className=""> beautiful digital experiences</span>
-          </motion.p>
-
-          {/* Enhanced Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+            className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 mb-12 border border-white/30 shadow-xl"
+            variants={itemVariants}
+          >
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+              variants={itemVariants}
+            >
+              Hello, I'm{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent">
+                Maria Emil
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto font-light leading-relaxed"
+              variants={itemVariants}
+            >
+              <span className="text-blue-600 font-semibold">UI/UX Designer</span> & 
+              <span className="text-indigo-700 font-semibold"> Front-End Developer</span> crafting 
+              <span className="text-gray-800"> beautiful digital experiences</span>
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-8 justify-center mb-20"
             variants={itemVariants}
           >
             <motion.a
               href="#projects"
-              className="px-10 py-4 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-2xl font-semibold text-lg hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 shadow-2xl"
-              whileHover={{ scale: 1.05, y: -3 }}
+              className="group relative px-14 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white rounded-2xl font-bold text-lg overflow-hidden shadow-2xl border border-cyan-400/50"
+              whileHover={{ scale: 1.08, y: -8 }}
               whileTap={{ scale: 0.95 }}
+              style={{
+                boxShadow: "0 0 40px rgba(34, 211, 238, 0.4)"
+              }}
             >
-              View My Work
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+              />
+              <span className="relative z-10 flex items-center justify-center gap-4">
+                <Code className="w-6 h-6" />
+                View My Work
+              </span>
             </motion.a>
+            
             <motion.a
               href="#contact"
-              className="px-10 py-4 bg-white/80 backdrop-blur-md border-2 border-blue-300/50 text-blue-700 rounded-2xl font-semibold text-lg hover:bg-blue-50/80 hover:border-blue-400/60 transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -3 }}
+              className="group relative px-12 py-5 bg-white/40 backdrop-blur-lg border-2 border-blue-300/50 text-blue-700 rounded-2xl font-bold text-lg overflow-hidden shadow-xl"
+              whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get In Touch
+              <div className="absolute inset-0 bg-blue-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                <Sparkles className="w-5 h-5" />
+                Get In Touch
+              </span>
             </motion.a>
           </motion.div>
 
-          {/* Enhanced Skill Cards */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-            variants={itemVariants}
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <motion.div
-              className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 text-center border border-blue-200/50 hover:bg-white/90 transition-all duration-500 shadow-lg"
-              whileHover={{ y: -8, scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Code className="w-8 h-8 text-white" />
+            <div className="relative bg-white/20 backdrop-blur-lg rounded-3xl p-8 border border-white/30 shadow-xl max-w-2xl mx-auto overflow-hidden">
+              {/* Background Pattern for Let's Connect Section */}
+              <div className="absolute inset-0 overflow-hidden">
+                {/* Grid Pattern */}
+                <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                
+                {/* Floating decorative elements */}
+                <motion.div
+                  className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-400/20 via-indigo-300/15 to-transparent rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360],
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-4 left-4 w-12 h-12 border-2 border-blue-400/30 rounded-lg rotate-45"
+                  animate={{
+                    rotate: [45, 225, 45],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <motion.div
+                  className="absolute top-1/2 left-6 w-8 h-8 bg-indigo-500/20 rounded-full"
+                  animate={{
+                    y: [0, -10, 0],
+                    scale: [1, 1.3, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <motion.div
+                  className="absolute top-6 left-1/3 w-6 h-6 bg-gradient-to-br from-cyan-400/25 to-blue-500/25 rounded-full"
+                  animate={{
+                    x: [0, 15, 0],
+                    scale: [1, 1.2, 1],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Frontend Development</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">React, TypeScript, JavaScript, HTML5, CSS3, Tailwind</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 text-center border border-blue-200/50 hover:bg-white/90 transition-all duration-500 shadow-lg"
-              whileHover={{ y: -8, scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Palette className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">UI/UX Design</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">Figma, Adobe XD, User Research, Prototyping</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 text-center border border-blue-200/50 hover:bg-white/90 transition-all duration-500 shadow-lg"
-              whileHover={{ y: -8, scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-700 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Creative Solutions</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">Innovation, Problem-solving, User-centered Design</p>
-            </motion.div>
+              
+              <motion.a
+                href="#contact"
+                className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white rounded-2xl font-bold text-lg hover:from-blue-700 hover:via-indigo-700 hover:to-blue-800 transition-all duration-300 shadow-2xl overflow-hidden z-10"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10 flex items-center gap-3">
+                  <Sparkles className="w-6 h-6" />
+                  Want to see more? Let's collaborate!
+                </span>
+              </motion.a>
+            </div>
           </motion.div>
-        </motion.div>
-
-        {/* Enhanced Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 -translate-x-4"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <a href="#about" className="text-blue-600/70 hover:text-blue-600 transition-colors duration-300 flex flex-col items-center gap-2">
-            <span className="text-sm font-medium">Scroll Down</span>
-            <ChevronDown className="w-6 h-6" />
-          </a>
         </motion.div>
       </div>
     </section>
