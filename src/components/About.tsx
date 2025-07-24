@@ -64,11 +64,11 @@ const About = () => {
     'VSCode', 'Git', 'GitHub', 'Vite', 'Notion',
     'Canva'
     
-    ,'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Bootstrap', 'Sass', 'TailwindCSS', 'Threejs', 'GSAP', 'FramerMotion', 'RESTAPIs', 'JSON', 'Redux', 'ResponsiveDesign', 'jQuery', 'MaterialUI', 'StyledComponents',
-    'Figma', 'Wireframing', 'Prototyping', 'AdobeXD', 'AdobeIllustrator',
-    'PHP', 'SQL', 'Firebase', 'Nodejs', 'Expressjs', 'MongoDB', 'MySQL',
+    ,'HTML', 'CSS', 'AdobeXD', 'AdobeIllustrator',
+    'PHP', 'SQL', 'Firebase', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Bootstrap', 'Sass', 'TailwindCSS', 'Threejs', 'GSAP', 'FramerMotion', 'RESTAPIs', 'JSON', 'Redux', 'ResponsiveDesign', 'jQuery', 'MaterialUI', 'StyledComponents',
+    'Figma', 'Wireframing', 'Prototyping', 'Nodejs', 'Expressjs',
+    'Canva', 'MongoDB', 'MySQL',
     'VSCode', 'Git', 'GitHub', 'Vite', 'Notion',
-    'Canva'
   ];
 
   return (
@@ -217,18 +217,9 @@ const About = () => {
 
           {/* Two marquee lines for all skills with glassmorphism background like get in touch section */}
           <div
-            className={`relative py-16 rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-cyan-400/10 backdrop-blur-xl w-full
-              ${isDark ? 'bg-gray-900/60' : 'bg-white/70'}
-            `}
-            style={isDark ? {
-              boxShadow: "0 0 40px rgba(34, 211, 238, 0.15), inset 0 0 40px rgba(59, 130, 246, 0.08)"
-            } : {
-              boxShadow: "0 0 40px rgba(99, 102, 241, 0.12), inset 0 0 40px rgba(99, 102, 241, 0.06)"
-            }}
+            className="relative py-16 w-full"
           >
-            {/* Gradient lines top and bottom, like get in touch section */}
-            <div className={`absolute top-0 left-0 w-full h-1 ${isDark ? 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent' : 'bg-gradient-to-r from-transparent via-indigo-500 to-transparent'}`}></div>
-            <div className={`absolute bottom-0 left-0 w-full h-1 ${isDark ? 'bg-gradient-to-r from-transparent via-purple-400 to-transparent' : 'bg-gradient-to-r from-transparent via-purple-500 to-transparent'}`}></div>
+            {/* Removed gradient lines and background from marquee container */}
             <div className="relative z-10 space-y-10">
               {(() => {
                 const half = Math.ceil(allSkills.length / 2);
@@ -253,16 +244,43 @@ const About = () => {
                         };
                         const color = brandColors[item] || (isDark ? '#22d3ee' : '#0ea5e9');
                         return (
-                          <div key={item + '-' + i} className="flex flex-col items-center min-w-[90px]">
-                            <div className="mb-2 flex items-center justify-center">
-                              {Icon ? (
-                                <Icon className="w-20 h-20" style={{ color }} title={item} />
-                              ) : (
-                                <span className="text-3xl font-bold" style={{ color }}>{item[0]}</span>
-                              )}
-                            </div>
-                            <span className={`text-base font-semibold ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{item}</span>
-                          </div>
+                  <div
+                    key={item + '-' + i}
+                    className={`relative flex flex-col items-center min-w-[100px] px-6 py-4 rounded-3xl shadow-xl border-2 transition-all duration-300 group cursor-pointer select-none
+                      ${isDark
+                        ? 'bg-gradient-to-br from-cyan-900/60 via-blue-900/40 to-indigo-900/60 border-cyan-400/30'
+                        : 'bg-gradient-to-br from-white/80 via-blue-100/80 to-cyan-100/80 border-blue-300/40'}
+                    `}
+                    style={{
+                      boxShadow: isDark
+                        ? '0 8px 32px 0 rgba(34,211,238,0.18), 0 2px 12px 0 rgba(59,130,246,0.12)'
+                        : '0 8px 32px 0 rgba(59,130,246,0.12), 0 2px 12px 0 rgba(99,102,241,0.10)',
+                      backdropFilter: 'blur(12px)',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {/* Animated gradient border on hover */}
+                    <span className={`pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10
+                      ${isDark
+                        ? 'bg-gradient-to-tr from-cyan-400/30 via-blue-500/20 to-purple-500/20'
+                        : 'bg-gradient-to-tr from-blue-400/20 via-cyan-300/20 to-purple-300/20'}
+                      animate-pulse
+                    `}></span>
+                    {/* Subtle glow effect */}
+                    <span className={`pointer-events-none absolute -inset-1 rounded-[2rem] blur-md opacity-60 z-0
+                      ${isDark
+                        ? 'bg-gradient-to-br from-cyan-400/20 via-blue-400/10 to-purple-400/20'
+                        : 'bg-gradient-to-br from-blue-300/20 via-cyan-200/10 to-purple-200/20'}
+                    `}></span>
+                    <div className="mb-2 flex items-center justify-center relative z-20">
+                      {Icon ? (
+                        <Icon className="w-14 h-14 group-hover:scale-110 transition-transform duration-300" style={{ color }} title={item} />
+                      ) : (
+                        <span className="text-3xl font-bold" style={{ color }}>{item[0]}</span>
+                      )}
+                    </div>
+                    <span className={`text-base font-semibold relative z-20 transition-colors duration-300 ${isDark ? 'text-cyan-100 group-hover:text-white' : 'text-blue-900 group-hover:text-cyan-700'}`}>{item}</span>
+                  </div>
                         );
                       })}
                     </div>

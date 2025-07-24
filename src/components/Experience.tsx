@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 import { Calendar, Award } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
+import { useState, useEffect, useCallback } from 'react';
 const Experience = () => {
   const { isDark } = useTheme();
+  const [modalImg, setModalImg] = useState<string | null>(null);
+  const [modalLoaded, setModalLoaded] = useState(false);
   
   const experiences = [
     {
@@ -66,36 +69,89 @@ const Experience = () => {
 
   const certifications = [
     {
-      name: 'Digital Egypt Pioneers Initiative (DEPI)',
-      issuer: 'Frontend Developer Certification',
+      name: 'IBM Full Stack Software Developer',
+      issuer: 'IBM',
+      year: '2025',
+      icon: '💻',
+      photos: [
+        {
+          src: '/images/certificates/ibm 1.jpg',
+          title: 'Introduction to software engineering',
+          link: 'https://www.coursera.org/account/accomplishments/verify/YCYJW2XIJI50?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse'
+        },
+        {
+          src: '/images/certificates/ibm 2.jpg',
+          title: 'Introduction to cloud computing',
+          link: 'https://www.coursera.org/account/accomplishments/verify/B9QZHD9FZ99Z?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse'
+        },
+      ],
+    },
+    {
+      name: 'Digital Egypt Pioneers Initiative Front-End Development',
+      issuer: 'MCIT',
       year: '2024',
       icon: '🎓',
+      photos: [
+        {
+          src: '/images/certificates/mcit.png',
+          title: 'Digital Egypt Pioneers Program Certificate',
+        },
+      ],
     },
     {
       name: 'NASA International Space Apps Challenge',
-      issuer: 'Participant Certificate',
+      issuer: 'NASA',
       year: '2024',
       icon: '🚀',
+      photos: [
+        { src: '/images/certificates/NASA1.jpeg', title: 'NASA Certificate 1' },
+        { src: '/images/certificates/NASA2.jpeg', title: 'NASA Certificate 2' },
+      ],
     },
     {
       name: 'Microsoft Security SC-900',
       issuer: 'Microsoft',
       year: '2024',
       icon: '🔐',
+      photos: [
+        { src: '/images/certificates/Microsoft.jpeg', title: 'Microsoft Security SC-900' },
+      ],
     },
     {
       name: 'CCNA: Introduction to Networks',
       issuer: 'Cisco',
       year: '2023',
       icon: '🌐',
+      photos: [
+        { src: '/images/certificates/ccna 1.jpeg', title: 'CCNA: Introduction to Networks' },
+      ],
     },
     {
-      name: 'IBM Full Stack Software Developer',
-      issuer: 'IBM',
-      year: '2025',
-      icon: '💻',
+      name: 'CCNA: Switching, Routing, and Wireless Essentials',
+      issuer: 'Cisco',
+      year: '2023',
+      icon: '🌐',
+      photos: [
+        { src: '/images/certificates/ccna 2.jpeg', title: 'CCNA: Switching, Routing, and Wireless Essentials' },
+      ],
     },
   ];
+
+  // Modal close handler
+  const closeModal = useCallback(() => {
+    setModalImg(null);
+    setModalLoaded(false);
+  }, []);
+
+  // Escape key closes modal
+  useEffect(() => {
+    if (!modalImg) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImg, closeModal]);
 
   return (
     <section id="experience" className={`py-20 relative overflow-hidden ${
@@ -266,244 +322,108 @@ const Experience = () => {
                     : 'from-blue-600 via-indigo-600 to-blue-800'
                 }`}>Journey</span>
               </motion.h2>
-              <motion.p
-                className={`text-xl max-w-2xl mx-auto ${
-                  isDark ? 'text-gray-200' : 'text-gray-600'
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Experience and achievements that shaped my career in technology
-              </motion.p>
             </motion.div>
           </div>
-
-          {/* Experience Timeline */}
-          <div className="mb-20">
-            <motion.h3
-              className={`text-2xl font-bold mb-12 text-center ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Professional Experience
-            </motion.h3>
-            
-            <div className="relative">
-              {/* Modern Timeline line */}
-              <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full rounded-full shadow-lg ${
-                isDark 
-                  ? 'bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-600' 
-                  : 'bg-gradient-to-b from-blue-500 via-indigo-500 to-blue-600'
-              }`}></div>
-              
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className={`relative flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center mb-16`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  {/* Enhanced Timeline marker */}
-                  <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10 shadow-xl border-4 ${
-                    isDark 
-                      ? 'bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 border-gray-800' 
-                      : 'bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700 border-white'
-                  }`}>
-                    <span className="text-white text-xl">{exp.icon}</span>
-                  </div>
-
-                  {/* Enhanced Content Card */}
-                  <div className={`ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <motion.div
-                      className={`backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border group ${
-                        isDark 
-                          ? 'bg-gray-800/60 border-cyan-400/30' 
-                          : 'bg-white/30 border-white/40'
-                      }`}
-                      whileHover={{ scale: 1.03, y: -8 }}
-                      style={isDark ? {
-                        boxShadow: "0 0 20px rgba(34, 211, 238, 0.1)"
-                      } : {}}
-                      onMouseEnter={(e) => {
-                        if (isDark) {
-                          e.currentTarget.style.boxShadow = "0 0 30px rgba(34, 211, 238, 0.2)";
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (isDark) {
-                          e.currentTarget.style.boxShadow = "0 0 20px rgba(34, 211, 238, 0.1)";
-                        }
-                      }}
-                    >
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="flex-1">
-                          <h4 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
-                            isDark 
-                              ? 'text-white group-hover:text-cyan-400' 
-                              : 'text-gray-900 group-hover:text-blue-700'
-                          }`}>
-                            {exp.company}
-                          </h4>
-                        </div>
-                        <span className={`px-4 py-2 text-white rounded-2xl text-sm font-bold shadow-lg ${
-                          isDark 
-                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600' 
-                            : 'bg-gradient-to-r from-blue-500 to-indigo-600'
-                        }`}>
-                          {exp.type}
-                        </span>
-                      </div>
-                      
-                      <div className="flex items-center mb-4">
-                        <div className={`flex items-center rounded-2xl px-4 py-2 ${
-                          isDark 
-                            ? 'bg-gray-700/50' 
-                            : 'bg-blue-50/50'
-                        }`}>
-                          <Calendar className={`w-4 h-4 mr-2 ${
-                            isDark ? 'text-cyan-400' : 'text-blue-600'
-                          }`} />
-                          <span className={`text-sm font-medium ${
-                            isDark ? 'text-gray-200' : 'text-gray-600'
-                          }`}>{exp.period}</span>
-                        </div>
-                      </div>
-                      
-                      <p className={`leading-relaxed ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}>{exp.description}</p>
-                      
-                      {/* Decorative gradient line */}
-                      <div className={`mt-6 h-1 rounded-full ${
-                        isDark 
-                          ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600' 
-                          : 'bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600'
-                      }`}></div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Enhanced Certifications */}
-          <div>
-            <motion.div
-              className={`backdrop-blur-lg rounded-3xl p-8 mb-12 border shadow-xl max-w-3xl mx-auto text-center ${
-                isDark 
-                  ? 'bg-gray-800/60 border-cyan-400/30' 
-                  : 'bg-white/20 border-white/30'
-              }`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              style={isDark ? {
-                boxShadow: "0 0 40px rgba(34, 211, 238, 0.2), inset 0 0 40px rgba(59, 130, 246, 0.1)"
-              } : {}}
-            >
-              <motion.h3
-                className={`text-3xl font-bold ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                Certifications & <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
+          {/* Certifications Section - Unified and fixed */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certifications.map((cert, certIdx) => (
+              <div key={certIdx} className="relative group rounded-3xl p-6 shadow-xl border-2 transition-all duration-300 bg-white/60 dark:bg-gray-900/60 border-cyan-400/20 dark:border-cyan-400/30 hover:scale-[1.03] hover:shadow-2xl hover:border-cyan-400/60">
+                <h4 className={`text-lg font-bold mb-3 transition-colors duration-300 ${
                   isDark 
-                    ? 'from-cyan-400 via-blue-400 to-purple-400' 
-                    : 'from-blue-600 via-indigo-600 to-blue-800'
-                }`}>Achievements</span>
-              </motion.h3>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={index}
-                  className={`group relative backdrop-blur-lg rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 border overflow-hidden ${
-                    isDark 
-                      ? 'bg-gray-800/60 border-cyan-400/30 hover:border-cyan-400/50' 
-                      : 'bg-white/30 border-white/40 hover:border-white/60'
-                  }`}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10, scale: 1.03 }}
-                  style={isDark ? {
-                    boxShadow: "0 0 20px rgba(34, 211, 238, 0.1)"
-                  } : {}}
-                  onMouseEnter={(e) => {
-                    if (isDark) {
-                      e.currentTarget.style.boxShadow = "0 0 30px rgba(34, 211, 238, 0.2)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (isDark) {
-                      e.currentTarget.style.boxShadow = "0 0 20px rgba(34, 211, 238, 0.1)";
-                    }
-                  }}
-                >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`w-16 h-16 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 ${
-                      isDark 
-                        ? 'bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700' 
-                        : 'bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700'
-                    }`}>
-                      <span className="text-white text-2xl">{cert.icon}</span>
-                    </div>
-                    <span className={`text-sm font-medium px-3 py-1 rounded-full ${
-                      isDark 
-                        ? 'text-gray-200 bg-gray-700/30' 
-                        : 'text-gray-500 bg-white/30'
-                    }`}>{cert.year}</span>
+                    ? 'text-white group-hover:text-cyan-400' 
+                    : 'text-gray-900 group-hover:text-blue-700'
+                }`}>
+                  {cert.name}
+                </h4>
+                <p className={`text-sm mb-6 ${
+                  isDark ? 'text-gray-300' : 'text-gray-600'
+                }`}>{cert.issuer}</p>
+                {cert.photos.length > 0 && (
+                  <div className="flex gap-3 mb-4 flex-wrap justify-center">
+                    {cert.photos.map((photo, idx) => {
+                      // Only IBM: open link in new tab, others: open modal
+                      if (cert.name === 'IBM Full Stack Software Developer' && 'link' in photo && photo.link) {
+                        return (
+                          <a
+                            key={photo.src}
+                            href={photo.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block text-center"
+                            title={photo.title}
+                          >
+                            <img
+                              src={photo.src}
+                              alt={photo.title}
+                              className="w-28 h-20 object-cover rounded-xl border-2 border-cyan-400/30 shadow-md hover:scale-105 transition-transform duration-300 bg-white/10 cursor-pointer"
+                              style={{ objectFit: 'cover' }}
+                            />
+                            <div className="text-xs mt-1 text-cyan-700 dark:text-cyan-300 font-semibold w-28 truncate" title={photo.title}>{photo.title}</div>
+                          </a>
+                        );
+                      } else {
+                        return (
+                          <div key={photo.src} className="inline-block text-center">
+                            <img
+                              src={photo.src}
+                              alt={photo.title}
+                              className="w-28 h-20 object-cover rounded-xl border-2 border-cyan-400/30 shadow-md hover:scale-105 transition-transform duration-300 bg-white/10 cursor-pointer"
+                              style={{ objectFit: 'cover' }}
+                              onClick={() => setModalImg(photo.src)}
+                            />
+                            <div className="text-xs mt-1 text-cyan-700 dark:text-cyan-300 font-semibold w-28 truncate" title={photo.title}>{photo.title}</div>
+                          </div>
+                        );
+                      }
+                    })}
                   </div>
-                  
-                  <h4 className={`text-lg font-bold mb-3 transition-colors duration-300 ${
-                    isDark 
-                      ? 'text-white group-hover:text-cyan-400' 
-                      : 'text-gray-900 group-hover:text-blue-700'
+                )}
+                <div className={`pt-4 border-t ${
+                  isDark ? 'border-cyan-400/30' : 'border-white/30'
+                }`}>
+                  <div className={`flex items-center ${
+                    isDark ? 'text-cyan-400' : 'text-blue-600'
                   }`}>
-                    {cert.name}
-                  </h4>
-                  <p className={`text-sm mb-6 ${
-                    isDark ? 'text-gray-300' : 'text-gray-600'
-                  }`}>{cert.issuer}</p>
-                  
-                  <div className={`pt-4 border-t ${
-                    isDark ? 'border-cyan-400/30' : 'border-white/30'
-                  }`}>
-                    <div className={`flex items-center ${
-                      isDark ? 'text-cyan-400' : 'text-blue-600'
-                    }`}>
-                      <Award className="w-5 h-5 mr-3" />
-                      <span className="text-sm font-bold">Certified Professional</span>
-                    </div>
+                    <Award className="w-5 h-5 mr-3" />
+                    <span className="text-sm font-bold">Certified Professional</span>
                   </div>
-                  
-                  {/* Decorative gradient accent */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl ${
-                    isDark 
-                      ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600' 
-                      : 'bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600'
-                  }`}></div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+                {/* Decorative gradient accent */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl ${
+                  isDark 
+                    ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600' 
+                    : 'bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600'
+                }`}></div>
+              </div>
+            ))}
           </div>
+
         </motion.div>
       </div>
+      {/* Modal for enlarged certificate image */}
+      {modalImg && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={closeModal}
+        >
+          <motion.img
+            src={modalImg}
+            alt="Certificate enlarged preview"
+            className="max-w-[90vw] max-h-[80vh] rounded-2xl border-4 border-cyan-400 shadow-2xl bg-white"
+            initial={{ scale: 0.7, opacity: 0 }}
+            animate={{ scale: modalLoaded ? 1 : 0.95, opacity: 1 }}
+            exit={{ scale: 0.7, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            onClick={e => e.stopPropagation()}
+            onLoad={() => setModalLoaded(true)}
+            style={{ boxShadow: isDark ? '0 0 60px rgba(34,211,238,0.4)' : '0 0 60px rgba(59,130,246,0.2)' }}
+          />
+        </motion.div>
+      )}
     </section>
   );
 };
