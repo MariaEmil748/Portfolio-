@@ -104,8 +104,8 @@ const Experience = () => {
       year: '2024',
       icon: '🚀',
       photos: [
-        { src: '/images/certificates/NASA1.jpeg', title: 'NASA Certificate 1' },
-        { src: '/images/certificates/NASA2.jpeg', title: 'NASA Certificate 2' },
+        { src: '/images/certificates/NASA1.jpeg', title: 'NASA International Space Apps Challenge' },
+        { src: '/images/certificates/NASA2.jpeg', title: 'NASA Space Apps Cairo ' },
       ],
     },
     {
@@ -162,7 +162,6 @@ const Experience = () => {
       {/* Cyberpunk Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className={`absolute inset-0 ${isDark ? 'bg-grid-pattern-dark' : 'bg-grid-pattern'} opacity-30`}></div>
-        
         {/* Floating Geometric Shapes */}
         <motion.div
           className={`absolute top-24 left-24 w-28 h-28 border-2 rotate-12 rounded-lg ${
@@ -225,7 +224,6 @@ const Experience = () => {
             ease: "easeInOut",
           }}
         />
-        
         {/* Gradient Orbs */}
         <motion.div
           className={`absolute top-1/3 right-20 w-32 h-32 rounded-full ${
@@ -259,7 +257,6 @@ const Experience = () => {
             ease: "easeInOut",
           }}
         />
-        
         {/* Scanning Line Effect for Dark Theme */}
         {isDark && (
           <motion.div
@@ -283,51 +280,135 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Experience Section Title */}
           <div className="text-center mb-16">
-            <motion.div
-              className={`backdrop-blur-lg rounded-3xl p-8 mb-8 border shadow-xl max-w-4xl mx-auto ${
-                isDark 
-                  ? 'bg-gray-800/40 border-cyan-400/30' 
-                  : 'bg-white/20 border-white/30'
-              }`}
+            <motion.h2
+              className={`text-5xl md:text-7xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              style={isDark ? {
-                boxShadow: "0 0 40px rgba(34, 211, 238, 0.2), inset 0 0 40px rgba(59, 130, 246, 0.1)"
-              } : {}}
+              style={isDark ? { textShadow: "0 0 30px rgba(34, 211, 238, 0.5)" } : {}}
             >
-              {isDark && (
-                <>
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent"></div>
-                </>
-              )}
-              <motion.h2
-                className={`text-5xl md:text-7xl font-bold mb-6 ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                style={isDark ? {
-                  textShadow: "0 0 30px rgba(34, 211, 238, 0.5)"
-                } : {}}
-              >
-                My <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
-                  isDark 
-                    ? 'from-cyan-400 via-blue-400 to-purple-400' 
-                    : 'from-blue-600 via-indigo-600 to-blue-800'
-                }`}>Journey</span>
-              </motion.h2>
-            </motion.div>
+              <span className={`bg-gradient-to-r bg-clip-text text-transparent ${isDark ? 'from-cyan-400 via-blue-400 to-purple-400' : 'from-blue-600 via-sky-600 to-cyan-600'}`}>Experience</span>
+            </motion.h2>
           </div>
-          {/* Certifications Section - Unified and fixed */}
+          {/* Experience Timeline - appears first */}
+          <div className="mb-20">
+            <div className="relative">
+              {/* Modern Timeline line */}
+              <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full rounded-full shadow-lg ${
+                isDark 
+                  ? 'bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-600' 
+                  : 'bg-gradient-to-b from-blue-500 via-indigo-500 to-blue-600'
+              }`}></div>
+              {experiences.map((exp, index) => (
+                <motion.div
+                  key={index}
+                  className={`relative flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center mb-16`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {/* Enhanced Timeline marker */}
+                  <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10 shadow-xl border-4 ${
+                    isDark 
+                      ? 'bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 border-gray-800' 
+                      : 'bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700 border-white'
+                  }`}>
+                    <span className="text-white text-xl">{exp.icon}</span>
+                  </div>
+                  {/* Enhanced Content Card */}
+                  <div className={`ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <motion.div
+                      className={`backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border group ${
+                        isDark 
+                          ? 'bg-gray-800/60 border-cyan-400/30' 
+                          : 'bg-white/30 border-white/40'
+                      }`}
+                      whileHover={{ scale: 1.03, y: -8 }}
+                      style={isDark ? {
+                        boxShadow: "0 0 20px rgba(34, 211, 238, 0.1)"
+                      } : {}}
+                      onMouseEnter={(e) => {
+                        if (isDark) {
+                          e.currentTarget.style.boxShadow = "0 0 30px rgba(34, 211, 238, 0.2)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (isDark) {
+                          e.currentTarget.style.boxShadow = "0 0 20px rgba(34, 211, 238, 0.1)";
+                        }
+                      }}
+                    >
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex-1">
+                          <h4 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
+                            isDark 
+                              ? 'text-white group-hover:text-cyan-400' 
+                              : 'text-gray-900 group-hover:text-blue-700'
+                          }`}>
+                            {exp.company}
+                          </h4>
+                        </div>
+                        <span className={`px-4 py-2 text-white rounded-2xl text-sm font-bold shadow-lg ${
+                          isDark 
+                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600' 
+                            : 'bg-gradient-to-r from-blue-500 to-indigo-600'
+                        }`}>
+                          {exp.type}
+                        </span>
+                      </div>
+                      <div className="flex items-center mb-4">
+                        <div className={`flex items-center rounded-2xl px-4 py-2 ${
+                          isDark 
+                            ? 'bg-gray-700/50' 
+                            : 'bg-blue-50/50'
+                        }`}>
+                          <Calendar className={`w-4 h-4 mr-2 ${
+                            isDark ? 'text-cyan-400' : 'text-blue-600'
+                          }`} />
+                          <span className={`text-sm font-medium ${
+                            isDark ? 'text-gray-200' : 'text-gray-600'
+                          }`}>{exp.period}</span>
+                        </div>
+                      </div>
+                      <p className={`leading-relaxed ${
+                        isDark ? 'text-gray-300' : 'text-gray-700'
+                      }`}>{exp.description}</p>
+                      {/* Decorative gradient line */}
+                      <div className={`mt-6 h-1 rounded-full ${
+                        isDark 
+                          ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600' 
+                          : 'bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600'
+                      }`}></div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          {/* Certifications Section Title */}
+          <div className="text-center mb-16 mt-24">
+            <motion.h2
+              className={`text-5xl md:text-7xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              style={isDark ? { textShadow: "0 0 30px rgba(34, 211, 238, 0.5)" } : {}}
+            >
+              <span className={`bg-gradient-to-r bg-clip-text text-transparent ${isDark ? 'from-cyan-400 via-blue-400 to-purple-400' : 'from-blue-600 via-sky-600 to-cyan-600'}`}>Certificates</span>
+            </motion.h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((cert, certIdx) => (
-              <div key={certIdx} className="relative group rounded-3xl p-6 shadow-xl border-2 transition-all duration-300 bg-white/60 dark:bg-gray-900/60 border-cyan-400/20 dark:border-cyan-400/30 hover:scale-[1.03] hover:shadow-2xl hover:border-cyan-400/60">
+              <div key={certIdx} className={`relative group rounded-3xl p-6 border-2 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl 
+                ${isDark 
+                  ? 'bg-gray-900/60 border-cyan-400/30 shadow-xl hover:border-cyan-400/60' 
+                  : 'bg-white/80 border-blue-100/80 shadow-lg hover:border-blue-300/90 backdrop-blur-xl'}
+              `}>
                 <h4 className={`text-lg font-bold mb-3 transition-colors duration-300 ${
                   isDark 
                     ? 'text-white group-hover:text-cyan-400' 
@@ -397,7 +478,6 @@ const Experience = () => {
               </div>
             ))}
           </div>
-
         </motion.div>
       </div>
       {/* Modal for enlarged certificate image */}
