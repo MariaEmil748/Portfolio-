@@ -104,8 +104,8 @@ const Experience = () => {
       year: '2024',
       icon: '🚀',
       photos: [
-        { src: '/images/certificates/NASA1.jpeg', title: 'NASA Certificate 1' },
-        { src: '/images/certificates/NASA2.jpeg', title: 'NASA Certificate 2' },
+        { src: '/images/certificates/NASA1.jpeg', title: 'NASA International Space Apps Challenge' },
+        { src: '/images/certificates/NASA2.jpeg', title: 'NASA Space Apps Cairo ' },
       ],
     },
     {
