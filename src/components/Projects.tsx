@@ -14,7 +14,7 @@ const Projects = () => {
       description: 'GENCARE is a pregnancy tracker that uses AI to detect fetal diseases and gives helpful tips for expectant mothers.',
       video: '/images/projects/gencare.mp4',
       type: 'Website & Mobile App',
-      gradient: isDark ? 'from-blue-400 to-blue-700' : 'from-blue-300 to-blue-600',  // GenCare: blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',  // GenCare: dark blue
       liveUrl: 'https://gencare-five.vercel.app/',
       category: 'Frontend',
     },
@@ -25,7 +25,7 @@ const Projects = () => {
       description: 'SCOOP is a fun ice cream shop website with playful UI/UX. Browse flavors and customize your order easily.',
       video: '/images/projects/scoop.mp4',
       type: 'Website Design',
-      gradient: isDark ? 'from-blue-400 to-blue-700' : 'from-blue-300 to-blue-600',  // Scoop: blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',  // Scoop: dark blue
       liveUrl: 'https://www.figma.com/proto/bBNWWNFxJPLjhL19IXyO9U/scoop?page-id=0%3A1&node-id=44-35&p=f&viewport=478%2C185%2C0.03&t=K36SEYGYAVQSoI6a-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=44%3A35',
       category: 'UIUX',
     },
@@ -33,10 +33,10 @@ const Projects = () => {
       id: 3,
       title: 'maria-bag',
       subtitle: 'portfolio',
-      description: "Maria's Bag is a creative portfolio that showcases unique projects and technical skills, all wrapped in an interactive experience.",
+      description: "Maria's Bag is a portfolio that showcases unique projects and technical skills, all wrapped in an interactive experience.",
       video: '/images/projects/mariabag.mp4',
       type: 'Portfolio Website',
-      gradient: isDark ? 'from-blue-400 to-blue-700' : 'from-blue-300 to-blue-600', // Maria-bag: blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800', // Maria-bag: dark blue
       liveUrl: 'https://maria-bag.vercel.app/',
       category: ['UIUX', 'Frontend'],
     },
@@ -52,6 +52,34 @@ const Projects = () => {
           }
           return project.category === filter;
         });
+  
+  // Track play state for each video
+  const [playing, setPlaying] = useState<{[id: number]: boolean}>({});
+  const handlePlayPause = (id: number, videoEl: HTMLVideoElement) => {
+    if (videoEl.paused) {
+      videoEl.play();
+      setPlaying(prev => ({ ...prev, [id]: true }));
+    } else {
+      videoEl.pause();
+      setPlaying(prev => ({ ...prev, [id]: false }));
+    }
+  };
+
+  // SVG icons for play/pause
+  const PlayIcon = (
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12">
+      <circle cx="24" cy="24" r="22" fill="rgba(0,0,0,0.5)" stroke="#fff" strokeWidth="2" />
+      <polygon points="18,15 36,24 18,33" fill="#fff" />
+    </svg>
+  );
+  const PauseIcon = (
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12">
+      <circle cx="24" cy="24" r="22" fill="rgba(0,0,0,0.5)" stroke="#fff" strokeWidth="2" />
+      <rect x="17" y="15" width="5" height="18" fill="#fff" />
+      <rect x="26" y="15" width="5" height="18" fill="#fff" />
+    </svg>
+  );
+
   return (
     <section id="projects" className={`py-20 relative overflow-hidden ${
       isDark 
@@ -280,108 +308,109 @@ const Projects = () => {
             </button>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                className="group relative"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -15, scale: 1.02 }}
-              >
-                <div className={`backdrop-blur-lg rounded-3xl overflow-hidden shadow-2xl border transition-all duration-500 h-full ${
-                  isDark 
-                    ? 'bg-gray-800/60 border-cyan-400/30 group-hover:border-cyan-400/50' 
-                    : 'bg-white/30 border-white/40 group-hover:border-white/60'
-                }`}
-                  style={isDark ? {
-                    boxShadow: "0 0 20px rgba(34, 211, 238, 0.1)"
-                  } : {}}
-                  onMouseEnter={(e) => {
-                    if (isDark) {
-                      e.currentTarget.style.boxShadow = "0 0 30px rgba(34, 211, 238, 0.2)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (isDark) {
-                      e.currentTarget.style.boxShadow = "0 0 20px rgba(34, 211, 238, 0.1)";
-                    }
-                  }}
-                >
-                  {/* Project Image with Overlay */}
-                  <div className="relative overflow-hidden h-72">
-                    <img
-                      src={project.video.replace('.mp4', '.png')}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-                    {/* Project Type Badge at bottom of image */}
-                    <div className="absolute bottom-4 left-4">
-                      <div className={`backdrop-blur-lg rounded-2xl px-4 py-2 border shadow-lg ${
-                        isDark 
-                          ? 'bg-gray-800/60 border-cyan-400/30' 
-                          : 'bg-white/20 border-white/30'
-                      }`}>
-                        <span className="text-white text-sm font-semibold flex items-center gap-2">
-                          <Smartphone className="w-4 h-4" />
-                          {project.type}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Bottom gradient accent */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r ${project.gradient}`} />
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-8">
-                    <div className="mb-6">
-                      <h3 className={`text-2xl font-bold mb-3 transition-colors duration-300 ${
-                        isDark 
-                          ? 'text-white group-hover:text-cyan-400' 
-                          : 'text-gray-900 group-hover:text-blue-700'
-                      }`}>
-                        {project.title}
-                      </h3>
-                      <p className={`text-sm font-semibold mb-4 uppercase tracking-wide ${
-                        isDark ? 'text-cyan-400' : 'text-blue-600'
-                      }`}>
-                        {project.subtitle}
-                      </p>
-                      <p className={`leading-relaxed ${
-                        isDark ? 'text-gray-200' : 'text-gray-700'
-                      }`}>
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Action Button */}
-                    <div className="pt-4">
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`w-full bg-gradient-to-r ${project.gradient} text-white px-6 py-3 rounded-2xl text-sm font-bold text-center hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 group-hover:scale-105 shadow-lg`}
-                          whileHover={{ y: -2 }}
-                          whileTap={{ scale: 0.98 }}
-                          style={isDark ? {
-                            boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)"
-                          } : {}}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          View Project
-                        </motion.a>
+            {filteredProjects.map(project => (
+              <div key={project.id} className={`relative group rounded-3xl overflow-hidden shadow-xl border-2 border-transparent hover:border-cyan-400 transition-all duration-300 bg-gradient-to-br ${project.gradient}`}>
+                <div className="relative">
+                  <video
+                    src={project.video}
+                    className={`w-full h-64 rounded-t-3xl cursor-pointer
+                      ${project.title === 'GenCare' || project.title === 'maria-bag'
+                        ? 'object-contain'
+                        : 'object-cover'}
+                    `}
+                    loop
+                    playsInline
+                    onClick={e => handlePlayPause(project.id, e.currentTarget)}
+                    style={{
+                      background: 'transparent', // No blue or gradient background
+                      ...(project.title === 'GenCare' || project.title === 'maria-bag'
+                        ? {
+                            aspectRatio: '16/9',
+                            maxHeight: '16rem',
+                          }
+                        : {}),
+                    }}
+                  />
+                  {/* Cool animated play/pause button overlay */}
+                  <button
+                    className={`
+                      absolute inset-0 flex items-center justify-center z-20
+                      transition-opacity duration-300
+                      ${playing[project.id] ? 'opacity-0 group-hover:opacity-80' : 'opacity-100 group-hover:opacity-100'}
+                      pointer-events-none group-hover:pointer-events-auto
+                    `}
+                    style={{
+                      background: 'transparent', // Remove blue overlay from button as well
+                    }}
+                    tabIndex={-1}
+                    aria-label={playing[project.id] ? 'Pause video' : 'Play video'}
+                    onClick={e => {
+                      e.stopPropagation();
+                      const videoEl = (e.currentTarget.parentElement?.querySelector('video')) as HTMLVideoElement;
+                      if (videoEl) handlePlayPause(project.id, videoEl);
+                    }}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0.7 }}
+                      animate={{
+                        scale: playing[project.id] ? 1.2 : 1,
+                        opacity: playing[project.id] ? 0.7 : 1,
+                        rotate: playing[project.id] ? 180 : 0,
+                      }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                      className="rounded-full shadow-2xl"
+                    >
+                      {playing[project.id] ? (
+                        // Animated Pause Icon
+                        <svg viewBox="0 0 64 64" className="w-16 h-16">
+                          <circle cx="32" cy="32" r="30" fill="rgba(34,211,238,0.25)" />
+                          <rect x="20" y="18" width="8" height="28" rx="3" fill="#fff" />
+                          <rect x="36" y="18" width="8" height="28" rx="3" fill="#fff" />
+                          <circle
+                            cx="32"
+                            cy="32"
+                            r="28"
+                            fill="none"
+                            stroke="#06b6d4"
+                            strokeWidth="2"
+                            strokeDasharray="8 8"
+                            className="animate-spin-slow"
+                          />
+                        </svg>
+                      ) : (
+                        // Animated Play Icon
+                        <svg viewBox="0 0 64 64" className="w-16 h-16">
+                          <circle cx="32" cy="32" r="30" fill="rgba(34,211,238,0.25)" />
+                          <polygon points="26,20 48,32 26,44" fill="#fff" />
+                          <circle
+                            cx="32"
+                            cy="32"
+                            r="28"
+                            fill="none"
+                            stroke="#06b6d4"
+                            strokeWidth="2"
+                            strokeDasharray="8 8"
+                            className="animate-pulse"
+                          />
+                        </svg>
                       )}
-                    </div>
-                  </div>
+                    </motion.div>
+                  </button>
                 </div>
-              </motion.div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg">{project.title}</h3>
+                  <p className="text-lg mb-2 text-white/80">{project.subtitle}</p>
+                  <p className="mb-4 text-white/70">{project.description}</p>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-2 rounded-full font-semibold transition-all duration-300 shadow-lg border-2 border-transparent bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-indigo-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
 

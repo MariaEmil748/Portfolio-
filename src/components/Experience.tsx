@@ -421,7 +421,7 @@ const Experience = () => {
                 }`}>{cert.issuer}</p>
                 {cert.photos.length > 0 && (
                   <div className="flex gap-3 mb-4 flex-wrap justify-center">
-                    {cert.photos.map((photo, idx) => {
+                    {cert.photos.map((photo) => {
                       // Only IBM: open link in new tab, others: open modal
                       if (cert.name === 'IBM Full Stack Software Developer' && 'link' in photo && photo.link) {
                         return (
