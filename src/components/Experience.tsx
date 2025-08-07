@@ -69,20 +69,15 @@ const Experience = () => {
 
   const certifications = [
     {
-      name: 'IBM Full Stack Software Developer',
+      name: 'IBM Full Stack Software Developer Professional Certificate',
       issuer: 'IBM',
       year: '2025',
       icon: '💻',
       photos: [
         {
-          src: '/images/certificates/ibm 1.jpg',
-          title: 'Introduction to software engineering',
-          link: 'https://www.coursera.org/account/accomplishments/verify/YCYJW2XIJI50?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse'
-        },
-        {
-          src: '/images/certificates/ibm 2.jpg',
-          title: 'Introduction to cloud computing',
-          link: 'https://www.coursera.org/account/accomplishments/verify/B9QZHD9FZ99Z?utm_source%3Dandroid%26utm_medium%3Dcertificate%26utm_content%3Dcert_image%26utm_campaign%3Dsharing_cta%26utm_product%3Dcourse'
+          src: '/images/certificates/ibm_professional.png',
+          title: 'IBM Full Stack Software Developer Professional Certificate',
+          link: 'https://coursera.org/share/2d6e88a1b4b3cc6f488038cbf8a41ecc'
         },
       ],
     },
@@ -422,25 +417,19 @@ const Experience = () => {
                 {cert.photos.length > 0 && (
                   <div className="flex gap-3 mb-4 flex-wrap justify-center">
                     {cert.photos.map((photo) => {
-                      // Only IBM: open link in new tab, others: open modal
-                      if (cert.name === 'IBM Full Stack Software Developer' && 'link' in photo && photo.link) {
+                      // Only IBM: open modal with link button, others: open modal without link
+                      if (cert.name === 'IBM Full Stack Software Developer Professional Certificate') {
                         return (
-                          <a
-                            key={photo.src}
-                            href={photo.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block text-center"
-                            title={photo.title}
-                          >
+                          <div key={photo.src} className="inline-block text-center">
                             <img
                               src={photo.src}
                               alt={photo.title}
                               className="w-28 h-20 object-cover rounded-xl border-2 border-cyan-400/30 shadow-md hover:scale-105 transition-transform duration-300 bg-white/10 cursor-pointer"
                               style={{ objectFit: 'cover' }}
+                              onClick={() => setModalImg(photo.src)}
                             />
                             <div className="text-xs mt-1 text-cyan-700 dark:text-cyan-300 font-semibold w-28 truncate" title={photo.title}>{photo.title}</div>
-                          </a>
+                          </div>
                         );
                       } else {
                         return (
@@ -490,18 +479,55 @@ const Experience = () => {
           transition={{ duration: 0.3 }}
           onClick={closeModal}
         >
-          <motion.img
-            src={modalImg}
-            alt="Certificate enlarged preview"
-            className="max-w-[90vw] max-h-[80vh] rounded-2xl border-4 border-cyan-400 shadow-2xl bg-white"
-            initial={{ scale: 0.7, opacity: 0 }}
-            animate={{ scale: modalLoaded ? 1 : 0.95, opacity: 1 }}
-            exit={{ scale: 0.7, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            onClick={e => e.stopPropagation()}
-            onLoad={() => setModalLoaded(true)}
-            style={{ boxShadow: isDark ? '0 0 60px rgba(34,211,238,0.4)' : '0 0 60px rgba(59,130,246,0.2)' }}
-          />
+          <div className="relative max-w-[90vw] max-h-[80vh] flex flex-col items-center">
+            <motion.img
+              src={modalImg}
+              alt="Certificate enlarged preview"
+              className="max-w-full max-h-[70vh] rounded-2xl border-4 border-cyan-400 shadow-2xl bg-white"
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: modalLoaded ? 1 : 0.95, opacity: 1 }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+              onClick={e => e.stopPropagation()}
+              onLoad={() => setModalLoaded(true)}
+              style={{ boxShadow: isDark ? '0 0 60px rgba(34,211,238,0.4)' : '0 0 60px rgba(59,130,246,0.2)' }}
+            />
+            
+            {/* Show link button for IBM certificates */}
+            {(() => {
+              // Find the current certificate and photo to check if it's IBM and has a link
+              const ibmCert = certifications.find(cert => cert.name === 'IBM Full Stack Software Developer Professional Certificate');
+              const currentPhoto = ibmCert?.photos.find(photo => photo.src === modalImg);
+              
+              if (currentPhoto && 'link' in currentPhoto && currentPhoto.link && currentPhoto.link !== '#') {
+                return (
+                  <motion.a
+                    href={currentPhoto.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-4 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg border ${
+                      isDark
+                        ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 border-cyan-400/50 hover:scale-105'
+                        : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 border-blue-500/60 hover:scale-105'
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: 0.2 }}
+                    onClick={e => e.stopPropagation()}
+                    style={isDark ? {
+                      boxShadow: "0 0 30px rgba(34, 211, 238, 0.3)"
+                    } : {
+                      boxShadow: "0 0 30px rgba(99, 102, 241, 0.3)"
+                    }}
+                  >
+                    View Certificate
+                  </motion.a>
+                );
+              }
+              return null;
+            })()}
+          </div>
         </motion.div>
       )}
     </section>
