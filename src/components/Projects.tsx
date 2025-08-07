@@ -9,34 +9,45 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'Halan Company',
+      subtitle: 'Fintech Solution Demo',
+      description: 'Halan is a fintech company providing innovative financial technology solutions and digital payment services for modern businesses.',
+      video: '/images/projects/halan.mp4',
+      type: 'Fintech Platform',
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',
+      liveUrl: 'https://halan-demo-maria-gamma.vercel.app/',
+      category: ['UIUX', 'Frontend'],
+    },
+    {
+      id: 2,
       title: 'GenCare',
       subtitle: 'Pregnancy Tracker',
       description: 'GENCARE is a pregnancy tracker that uses AI to detect fetal diseases and gives helpful tips for expectant mothers.',
       video: '/images/projects/gencare.mp4',
       type: 'Website & Mobile App',
-      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',  // GenCare: dark blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',
       liveUrl: 'https://gencare-five.vercel.app/',
       category: 'Frontend',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Scoop Ice Cream',
       subtitle: 'Sweet Digital Experience',
       description: 'SCOOP is a fun ice cream shop website with playful UI/UX. Browse flavors and customize your order easily.',
       video: '/images/projects/scoop.mp4',
       type: 'Website Design',
-      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',  // Scoop: dark blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',
       liveUrl: 'https://www.figma.com/proto/bBNWWNFxJPLjhL19IXyO9U/scoop?page-id=0%3A1&node-id=44-35&p=f&viewport=478%2C185%2C0.03&t=K36SEYGYAVQSoI6a-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=44%3A35',
       category: 'UIUX',
     },
     {
-      id: 3,
+      id: 4,
       title: 'maria-bag',
       subtitle: 'portfolio',
       description: "Maria's Bag is a portfolio that showcases unique projects and technical skills, all wrapped in an interactive experience.",
       video: '/images/projects/mariabag.mp4',
       type: 'Portfolio Website',
-      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800', // Maria-bag: dark blue
+      gradient: isDark ? 'from-gray-900 via-blue-900 to-indigo-900' : 'from-blue-900 via-blue-800 to-indigo-800',
       liveUrl: 'https://maria-bag.vercel.app/',
       category: ['UIUX', 'Frontend'],
     },
@@ -314,7 +325,7 @@ const Projects = () => {
                   <video
                     src={project.video}
                     className={`w-full h-64 rounded-t-3xl cursor-pointer
-                      ${project.title === 'GenCare' || project.title === 'maria-bag'
+                      ${project.title === 'GenCare' || project.title === 'maria-bag' || project.title === 'Halan Company'
                         ? 'object-contain'
                         : 'object-cover'}
                     `}
@@ -323,7 +334,7 @@ const Projects = () => {
                     onClick={e => handlePlayPause(project.id, e.currentTarget)}
                     style={{
                       background: 'transparent', // No blue or gradient background
-                      ...(project.title === 'GenCare' || project.title === 'maria-bag'
+                      ...(project.title === 'GenCare' || project.title === 'maria-bag' || project.title === 'Halan Company'
                         ? {
                             aspectRatio: '16/9',
                             maxHeight: '16rem',
@@ -333,7 +344,7 @@ const Projects = () => {
                   />
                   {/* Cool animated play/pause button overlay */}
                   <button
-                    className={`
+                    className={`                    // ...existing code...
                       absolute inset-0 flex items-center justify-center z-20
                       transition-opacity duration-300
                       ${playing[project.id] ? 'opacity-0 group-hover:opacity-80' : 'opacity-100 group-hover:opacity-100'}
